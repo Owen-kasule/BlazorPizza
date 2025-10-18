@@ -4,6 +4,12 @@
 
 <div class="game">
     <div class="board">
+        <div class="column-controls">
+            @for (int c = 0; c < Cols; c++)
+            {
+                <button class="col-btn btn btn-sm btn-outline-secondary" @onclick="() => DropInColumn(c)">@(c + 1)</button>
+            }
+        </div>
         @for (int r = 0; r < Rows; r++)
         {
             <div class="row">

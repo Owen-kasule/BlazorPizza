@@ -3,6 +3,7 @@
 .row{display:flex;}
 .cell{width:64px;height:64px;border:1px solid #ddd;display:flex;align-items:center;justify-content:center;background:#e9f1ff}
 .piece{width:48px;height:48px;border-radius:50%;background:transparent}
+.cell{cursor:pointer}
 .piece.empty{background:transparent}
 .piece.red{background:#e53935}
 .piece.yellow{background:#fbc02d}
@@ -10,3 +11,5 @@
 .moves{max-height:300px;overflow:auto;padding-left:1rem}
 .status{margin:0.5rem 0}
 .btn{margin-bottom:0.5rem}
+.column-controls{display:flex;gap:0.25rem;padding:0.5rem}
+.col-btn{width:48px}

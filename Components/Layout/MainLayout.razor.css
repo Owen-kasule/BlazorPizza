@@ -88,6 +88,17 @@ main {
     z-index: 1000;
 }
 
+/* Ensure the footer is visible at the bottom of the viewport */
+.app-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: #ffffffcc; /* slight translucency to avoid harsh edge */
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #e6e6e6;
+    z-index: 2;
+}
+
     #blazor-error-ui .dismiss {
         cursor: pointer;
         position: absolute;

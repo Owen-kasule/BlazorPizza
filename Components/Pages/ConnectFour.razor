@@ -6,18 +6,20 @@
 <div class="game">
     <div class="board">
         <div class="column-controls">
-            @for (int c = 0; c < Cols; c++)
+            @for (int col = 0; col < Cols; col++)
             {
-                <button class="col-btn btn btn-sm btn-outline-secondary" @onclick="() => DropInColumn(c)">@(c + 1)</button>
+                var colIndex = col;
+                <button class="col-btn btn btn-sm btn-outline-secondary" @onclick="() => DropInColumn(colIndex)">@(col + 1)</button>
             }
         </div>
         @for (int r = 0; r < Rows; r++)
         {
             <div class="row">
-                @for (int c = 0; c < Cols; c++)
+                @for (int col = 0; col < Cols; col++)
                 {
-                    var cell = board[r, c];
-                    <div class="cell" @onclick="() => DropInColumn(c)">
+                    var colIndex = col;
+                    var cell = board[r, col];
+                    <div class="cell" @onclick="() => DropInColumn(colIndex)">
                         <div class="piece @(cell == 0 ? "empty" : cell == 1 ? "red" : "yellow")"></div>
                     </div>
                 }

@@ -90,13 +90,19 @@ main {
 
 /* Ensure the footer is visible at the bottom of the viewport */
 .app-footer {
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     background: #ffffffcc; /* slight translucency to avoid harsh edge */
     padding: 0.75rem 1rem;
     border-top: 1px solid #e6e6e6;
-    z-index: 2;
+    z-index: 1000;
+}
+
+/* Add bottom padding to content so it's not hidden by the fixed footer */
+article.content {
+    padding-bottom: 3.5rem; /* slightly larger than footer height */
 }
 
     #blazor-error-ui .dismiss {

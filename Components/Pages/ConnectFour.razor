@@ -1,0 +1,105 @@
+@page "/connectfour"
+
+<h1>Connect Four</h1>
+
+<div class="game">
+    <div class="board">
+        @for (int r = 0; r < Rows; r++)
+        {
+            <div class="row">
+                @for (int c = 0; c < Cols; c++)
+                {
+                    var cell = board[r, c];
+                    <div class="cell" @onclick="() => DropInColumn(c)">
+                        <div class="piece @(cell == 0 ? "empty" : cell == 1 ? "red" : "yellow")"></div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <aside class="sidebar-panel">
+        <div class="status">@statusMessage</div>
+        <button class="btn btn-primary" @onclick="NewGame">New Game</button>
+
+        <h3>Moves</h3>
+        <ol class="moves">
+            @foreach (var m in moves)
+            {
+                <li>@m</li>
+            }
+        </ol>
+    </aside>
+</div>
+
+@code {
+    const int Rows = 6;
+    const int Cols = 7;
+    int[,] board = new int[Rows, Cols]; // 0 empty, 1 player1, 2 player2
+    int currentPlayer = 1;
+    string statusMessage = "Player 1 (Red) to move";
+    List<string> moves = new();
+
+    void NewGame()
+    {
+        board = new int[Rows, Cols];
+        currentPlayer = 1;
+        statusMessage = "Player 1 (Red) to move";
+        moves.Clear();
+    }
+
+    void DropInColumn(int col)
+    {
+        if (CheckWinner() != 0) return; // game over
+
+        for (int r = Rows - 1; r >= 0; r--)
+        {
+            if (board[r, col] == 0)
+            {
+                board[r, col] = currentPlayer;
+                moves.Add($"Player {currentPlayer} -> Column {col + 1}");
+                if (CheckWinAt(r, col))
+                {
+                    statusMessage = $"Player {currentPlayer} wins!";
+                }
+                else
+                {
+                    currentPlayer = currentPlayer == 1 ? 2 : 1;
+                    statusMessage = $"Player {currentPlayer} {(currentPlayer == 1 ? "(Red)" : "(Yellow)")} to move";
+                }
+                break;
+            }
+        }
+    }
+
+    int CheckWinner()
+    {
+        for (int r = 0; r < Rows; r++)
+            for (int c = 0; c < Cols; c++)
+                if (board[r, c] != 0 && CheckWinAt(r, c))
+                    return board[r, c];
+        return 0;
+    }
+
+    bool CheckWinAt(int r, int c)
+    {
+        int player = board[r, c];
+        if (player == 0) return false;
+
+        // Directions: horizontal, vertical, diag1, diag2
+        int[][] dirs = new int[][] { new int[]{0,1}, new int[]{1,0}, new int[]{1,1}, new int[]{1,-1} };
+        foreach (var d in dirs)
+        {
+            int count = 1;
+            int dr = d[0], dc = d[1];
+            // forward
+            int rr = r + dr, cc = c + dc;
+            while (rr >= 0 && rr < Rows && cc >= 0 && cc < Cols && board[rr, cc] == player) { count++; rr += dr; cc += dc; }
+            // backward
+            rr = r - dr; cc = c - dc;
+            while (rr >= 0 && rr < Rows && cc >= 0 && cc < Cols && board[rr, cc] == player) { count++; rr -= dr; cc -= dc; }
+            if (count >= 4) return true;
+        }
+        return false;
+    }
+}

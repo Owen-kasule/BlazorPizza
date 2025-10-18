@@ -1,0 +1,12 @@
+.game{display:flex;gap:1rem}
+.board{display:flex;flex-direction:column;gap:0.25rem;background:#fff;padding:1rem;border-radius:4px}
+.row{display:flex;}
+.cell{width:64px;height:64px;border:1px solid #ddd;display:flex;align-items:center;justify-content:center;background:#e9f1ff}
+.piece{width:48px;height:48px;border-radius:50%;background:transparent}
+.piece.empty{background:transparent}
+.piece.red{background:#e53935}
+.piece.yellow{background:#fbc02d}
+.sidebar-panel{min-width:220px}
+.moves{max-height:300px;overflow:auto;padding-left:1rem}
+.status{margin:0.5rem 0}
+.btn{margin-bottom:0.5rem}

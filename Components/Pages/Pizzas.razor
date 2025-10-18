@@ -1,0 +1,35 @@
+@page "/pizzas"
+@using System.Globalization
+
+<h1>Pizza Menu</h1>
+<p class="lead">All prices shown in local currency.</p>
+
+@if (pizzas is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in pizzas)
+        {
+            <li><strong>@p.Name</strong> — @p.Price.ToString("C")</li>
+        }
+    </ul>
+}
+
+@code {
+    public record Pizza(string Name, decimal Price);
+    List<Pizza>? pizzas;
+
+    protected override void OnInitialized()
+    {
+        pizzas = new()
+        {
+            new("Margherita", 12000m),
+            new("Pepperoni", 17500m),
+            new("Hawaiian", 16000m),
+            new("Spicy BBQ Chicken", 18500m) // extra item
+        };
+    }
+}

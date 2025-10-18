@@ -56,3 +56,4 @@
 /home/kasule/Documents/2025 Semester Winter/CSE325 - .NET Software Development/Week03/BlazorPizza/obj/Debug/net8.0/BlazorPizza.pdb
 /home/kasule/Documents/2025 Semester Winter/CSE325 - .NET Software Development/Week03/BlazorPizza/obj/Debug/net8.0/BlazorPizza.genruntimeconfig.cache
 /home/kasule/Documents/2025 Semester Winter/CSE325 - .NET Software Development/Week03/BlazorPizza/obj/Debug/net8.0/ref/BlazorPizza.dll
+/home/kasule/Documents/2025 Semester Winter/CSE325 - .NET Software Development/Week03/BlazorPizza/obj/Debug/net8.0/BlazorPizza.sourcelink.json

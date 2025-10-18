@@ -2,10 +2,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar {
@@ -88,33 +91,17 @@ main {
     z-index: 1000;
 }
 
-/* Ensure the footer is visible at the bottom of the viewport */
+/* Footer at the bottom without overlapping content */
 .app-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 56px; /* fixed footer height */
-    background: #ffffffee; /* slight translucency */
-    padding: 0 1rem;
+    margin-top: auto;
+    padding: 0.75rem 1rem;
     border-top: 1px solid #e6e6e6;
-    z-index: 9999; /* ensure it's above other elements */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Ensure page content doesn't overlap the fixed footer */
-html, body {
-    height: 100%;
-}
-
-body {
-    padding-bottom: 64px; /* a little more than footer height */
+    background: #f7f7f7;
 }
 
 article.content {
-    padding-bottom: 1rem; /* keep some spacing inside article as well */
+    flex: 1;
+    padding-bottom: 1rem;
 }
 
     #blazor-error-ui .dismiss {
